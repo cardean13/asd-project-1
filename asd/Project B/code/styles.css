@@ -1,0 +1,163 @@
+/*
+
+Yusef Hassan
+ASD 0712
+Project 1
+
+*/
+ 
+
+
+
+body
+{
+	background-image: url(jpg/gradient.png);
+	background-repeat: repeat-x;
+	background-attachment: fixed;
+
+}
+
+h1{
+	font: 24px helvetica;
+	margin: 20px 10px;
+	padding: 10px;
+	font-weight: bold;
+	border: 1px solid black;
+	border-radius: 15px;
+	width: 	auto;
+	color: #242e30;
+	background-color: #ffcc99;
+	text-align: center
+}
+
+h2{
+	border: 1px solid black;
+	border-radius: 15px;
+	background-color: #99cc99;
+	font: 22px Arial;
+	text-align: center ;
+	margin: 0px 10px;
+	margin-top: -20px;
+	color: black;
+}
+
+.search{
+	margin-left: 10px;
+	width: 206px;
+	text-shadow: 0 1px 1px color black;
+}
+
+.add{	
+	border-radius: 15px;
+	text-align: center;
+	font-size: 40px;
+	line-height: 146px ;
+	display: block;
+	background-image:url(images/stock.png);
+	background-repeat: no-repeat;
+	margin: auto;
+	height: 170px;
+	width: 245px;
+}
+
+.all{
+	display: block;
+	font: 16px Arial;
+	margin: 20px 10px;
+	width: 200px;
+	color: #000000;
+	background-color: #ccffff;		
+	text-align: center;
+
+}
+
+a:hover{
+	color: olive;
+}
+
+legend{
+	background-color: #cfcfcf;
+	padding-top: 2px ;
+	margin-top: 20px;
+	margin-left: -13px;
+	border: 1px solid black;
+	
+}
+
+
+fieldset{
+	font: 18px times ;
+	margin: 30px 10px;
+	background: #99cc99;
+
+}
+
+label{
+	color: #000000;
+	padding-top: 10px
+}
+
+#errors{
+	list-style-image: url(jpg/arrow.png);
+	color: red;
+}
+#nav{
+	margin: 0;
+	padding: 7px 6px 0;
+	background: #d4d4d4;
+	line-height: inherit;
+	text-align: center;
+	width: auto;
+	border-radius: 15 px;
+	
+	border: 1px solid black;
+}
+#nav li{
+	float: center;
+	list-style: none;
+}
+#nav a{	
+	font-weight: bold;
+	text-decoration: none;
+	font-weight: bold;
+	color: #242e30;
+	background-color: #d4d4d4;
+	text-align: center;
+
+}
+
+#nav ul li:hover a, #nav li:hover li a {
+	width: auto;
+	background: none;
+	border: none;
+	color: black;
+}
+#nav li:hover > ul {
+	display: table-row;
+}
+
+#nav ul {
+	display: none;
+	margin: 0;
+	padding: 0;
+	width: inherit;
+	position:  relative;
+	background: #ddd;
+	border: 1px solid #b4b4b4;
+	
+}
+#nav ul li {
+	float: none;
+	margin: auto;
+	padding: auto;
+	width: auto;
+}
+
+#nav ul a{
+	font-weight: normal;
+}
+
+#nav ul ul {
+	left: 89px;
+	top: -1px;
+}

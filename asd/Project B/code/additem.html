@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- Yusef Hassan -->
+<!-- ASD 0712 -->
+<!-- Project 1 -->
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="description" content="Project1 VFW,  Game&#47;DVD Lender"/>
+		<meta name="keywords" content="DVD, Video Game, Lend, VFW"/>
+		<meta name="robots" content="index, follow" />
+		<meta name="robots" content="noindex, nofollow" />
+		<meta name="viewport" content="user-scalable=no, width=device-width"/>
+		<title>  Game&#47;DVD Lender </title>		
+		<link href="styles.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body>
+		<header>
+			<h1>Info on Borrower</h1>
+		</header>
+		<nav>
+			<a class="all" href="#" id="remove">Remove All Accounts</a>
+			<a class="all" href="#" id="allAccounts">View All Accounts</a>
+			<a class="all" href="additem.html" id="addAccount" style="display:none;">Add New Account</a>
+		</nav>
+		<form action="#" method="post" id="accountInfo">
+			<fieldset>
+			<legend>Account Information</legend>
+			<span>&#42;Required Data</span>
+			<ul id="errors"></ul>
+				<li><label for="fname">&#42; First Name:</label><input type="text" id="fname"/></li> 
+				<li><label for="lname">&#42; Last Name:</label><input type="text" id="lname"/></li>
+				<li><input type="radio" value="Male" id="male" name="sex" /> <label for="male">Male</label></li>
+				<li><input type="radio" value="Female" id="female" name="sex" /> <label for="female">Female</label></li>
+				<label for="age"> Age (10-80)<br /></label><input type="range" id="ageRange" min="10" max="80" value="10" step="1"/></li>
+				
+				</li>
+			</fieldset>
+			<fieldset>
+				<legend>Questions</legend>
+				<span>Check For Yes</span>
+				<ul id="boxes"></ul>
+					<li><label for="reliable" >Is the borrower reliable?</label><input type="checkbox" value="Yes" id="reliable"/></li>
+					<li><label for="job" >Do they have a job?</label><input type="checkbox" value="Yes" id="job"/></li>
+					<li><label for="replace" >If broken, could they replace it?</label><input type="checkbox" value="Yes" id="replace"/></li>
+					<li><label for="trust" >Do you fully trust them?</label><input type="checkbox" value="Yes" id="trust"/></li>
+			</fieldset>
+			<fieldset>
+				<legend>Disc Information</legend>
+				<label for="media">&#42; Type of Media</label>
+				<div id="select"></div>
+				<ul id="errors"></ul>
+					<li><label for="dname">Disc Name:</label><input type="text" id="dname"/></li>
+					<li><label for="value">Value:</label><input type="text" id="value"/></li>
+					<li><label for="ldate">Date Lent:</label><input type="date" id="ldate" /></label></li>
+					<li><label for="rdate">Expected Return Date:</label><input type="date" id="rdate" /></label></li>
+					<li><label for="comments">Any more information?<br></label><textarea id="comments"></textarea></li>
+			</fieldset>
+			<input type="submit" value="Confirm Lending" id="submit" />
+		</form>
+		<script src="json.js" type="text/javascript"></script>
+		<script src="main.js" type="text/javascript"></script>
+	</body>
+</html>
