@@ -263,7 +263,7 @@ $(document).bind('pageinit',function(){
 		}
 	}
 	
-/*	function validate(d){
+	function validate(d){
 		var getDname = e("dname");
 		var getFname = e("fname");
 		var getLname = e("lname");
@@ -271,32 +271,40 @@ $(document).bind('pageinit',function(){
 			getDname.style.border = "1px solid black";
 			getFname.style.border = "1px solid black";
 			getLname.style.border = "1px solid black";
-*/
+
 		var message = [];
-		$("div > input.required").css({
-		backgroundColor: "#ff0000"
-		});
-		/*if(getFname.value === ""){
+
+		
+		if(getFname.value === ""){
 			var fnameError = "Please Type in First Name.";
-			getFname.style.border = "1px solid red";
+		$("#fname").css({
+		borderColor: "#ff0000",
+		hight: "1px",
+		});
 			message.push(fnameError);
 		}
 		if(getLname.value === ""){
 			var lnameError = "Please Type in Last Name.";
-			getLname.style.border = "1px solid red";
+		$("#lname").css({
+		borderColor: "#ff0000",
+		hight: "1px",
+		});
 			message.push(lnameError);
 		}
 		if(getDname.value === ""){
-			var DnameError = "Please Type in Last Name.";
-			getDname.style.border = "1px solid red";
-			message.push(DnameError);
+			var dnameError = "Please Type in Disc Name.";
+		$("#dname").css({
+		borderColor: "#ff0000",
+		hight: "1px",
+		});
+			message.push(dnameError);
 		}
-		
+		alert(message);
 		if (message.length >= 1){
 			for(var i=0, j=message.length; i < j; i++){
 				var text = document.createElement("li");
 				text.innerHTML = message[i];
-			}*/
+			}
 			d.preventDefault()
 			return false;
 		}else{
