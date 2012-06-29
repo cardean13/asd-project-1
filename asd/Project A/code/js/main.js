@@ -56,25 +56,19 @@ $(document).bind('pageinit',function(){
 		}else{
 			reliableValue = "No"
 		}
-//	}	
-	
-//	function getCheckBoxValue(){
+
 		if(e("job").checked){
 			jobValue = e("job").value;
 		}else{
 			jobValue = "No"
 		}
-//	}
-	
-//	function getCheckBoxValue(){
+		
 		if(e("replace").checked){
 			replaceValue = e("replace").value;
 		}else{
 			replaceValue = "No"
 		}
-//	}
-	
-//	function getCheckBoxValue(){
+
 		if(e("trust").checked){
 			trustValue = e("trust").value;
 		}else{
@@ -175,11 +169,10 @@ $(document).bind('pageinit',function(){
 		}
 	}
 	function getImage(catName, makeSubList){
-		var imageLi = document.createElement("li");
-		makeSubList.appendChild(imageLi);
-		var newImg = document.createElement("img");
+		var imageLi = $.create("li");
+		makeSubList.append(imageLi);
+		var newImg = $.create("img");
 		var setSrc = newImg.setAttribute("src", "images/"+ catName + ".png");
-		imageLi.appendChild(newImg);
 	}
 	//make Item links function, creates edit and delete links
 	function makeItemLinks(key, linksLi){
@@ -187,7 +180,7 @@ $(document).bind('pageinit',function(){
 		editLink.href = "#";
 		editLink.key = key;
 		var editText = "Edit Info";
-		editLink.addEventListener("click", editItem);
+		$(editLink).bind("click", editItem);
 		editLink.innerHTML = editText;
 		linksLi.appendChild(editLink);
 		
@@ -195,7 +188,7 @@ $(document).bind('pageinit',function(){
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Info";
-		deleteLink.addEventListener("click", deleteItem);
+		$(deleteLink).bind("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 	}
@@ -205,8 +198,8 @@ $(document).bind('pageinit',function(){
 		var item = JSON.parse(value);
 		toggleControls("off");
 		
-		e("fname").value = item.fname[1];
-		e("lname").value = item.lname[1];
+		$("#fname").value = item.fname[1];
+		$("#lname").value = item.lname[1];
 		var radios = document.forms[0].sex;
 		for(var i=0; i<radios.length; i++){
 			if(radios[i].value == "Male" && item.sex[1] == "Male"){
@@ -215,7 +208,7 @@ $(document).bind('pageinit',function(){
 				radios[i].setAttribute("checked", "checked");
 			}
 		}
-		e("ageRange").value = item.age[1];		
+	/*	e("ageRange").value = item.age[1];		
 		
 		if(item.reliable[1] == "Yes"){
 			e("reliable").setAttribute("checked", "checked");
@@ -228,17 +221,17 @@ $(document).bind('pageinit',function(){
 		}
 		if(item.trust[1] == "Yes"){
 			e("trust").setAttribute("checked", "checked");
-		}
-		e("dname").value = item.dname[1];
-		e("value").value = item.value[1];
-		e("ldate").value = item.ldate[1];
-		e("rdate").value = item.rdate[1];
-		e("comments").value = item.comments[1];
+		}*/
+		$("#dname").value = item.dname[1];
+		$("#value").value = item.value[1];
+		$("#ldate").value = item.ldate[1];
+		$("#rdate").value = item.rdate[1];
+		$("#comments").value = item.comments[1];
 		
-		save.removeEventListener("click", saveData);
-		e("submit").value = "Edit Contact";
-		var editSubmit = e("submit");
-		editSubmit.addEventListener("click", validate);
+		$(save).unbind("click", saveData);
+		$("#submit").value = "Edit Contact";
+		var editSubmit = $("#submit");
+		$(editSubmit).bind("click", validate);
 		editSubmit.key = this.key;
 	}
 	
@@ -277,35 +270,34 @@ $(document).bind('pageinit',function(){
 		
 		if(getFname.value === ""){
 			var fnameError = "Please Type in First Name.";
-		$("#fname").css({
-		borderColor: "#ff0000",
-		hight: "1px",
-		});
+				$("#fname").css({
+					borderColor: "#ff0000",
+					hight: "1px",
+				});
 			message.push(fnameError);
 		}
 		if(getLname.value === ""){
 			var lnameError = "Please Type in Last Name.";
-		$("#lname").css({
-		borderColor: "#ff0000",
-		hight: "1px",
-		});
+				$("#lname").css({
+					borderColor: "#ff0000",
+					hight: "1px",
+				});
 			message.push(lnameError);
 		}
 		if(getDname.value === ""){
 			var dnameError = "Please Type in Disc Name.";
-		$("#dname").css({
-		borderColor: "#ff0000",
-		hight: "1px",
-		});
+				$("#dname").css({
+					borderColor: "#ff0000",
+					hight: "1px",
+				});
 			message.push(dnameError);
 		}
-		alert(message);
 		if (message.length >= 1){
 			for(var i=0, j=message.length; i < j; i++){
-				var text = document.createElement("li");
-				text.innerHTML = message[i];
+				var text = $("li");
+				text.html = message[i];
 			}
-			d.preventDefault()
+			alert(message);
 			return false;
 		}else{
 			saveData(this.key);
