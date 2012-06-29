@@ -1,6 +1,6 @@
 //Yusef Hassan
-//ASD 0712
-//Project 1
+//MIU 0512
+//Project 3
 
 var parseAccountInfo = function(data){
 		console.log(data);
@@ -23,7 +23,6 @@ $(document).bind('pageinit',function(){
 ;
 
 //wait till DOM is ready
-//window.addEventListener("DOMContentLoaded", function(){
 
 	//get element by ID function
 	function e(x){
@@ -38,13 +37,6 @@ $(document).bind('pageinit',function(){
 			makeSelect = document.createElement("select");
 			makeSelect.setAttribute("id", "groups");
 		//comeback to type of media
-		/*for (var i=0, j=typeOfMedia.length; i<j; i++){
-			var makeOption = document.createElement("option");
-			var optText = typeOfMedia[i];
-			makeOption.setAttribute("value", optText);
-			makeOption.innerHTML = optText;
-			makeSelect.appendChild(makeOption);
-		}*/
 	//	selectLi.appendChild(makeSelect);
 	}
 	
@@ -93,6 +85,8 @@ $(document).bind('pageinit',function(){
 	function toggleControls(n){
 		switch(n){
 			case "on":
+				e("foot").style.display = "none";
+				e("allInfo").style.display = "inline";
 				e("accountInfo").style.display = "none";
 				e("remove").style.display = "inline";
 				e("allAccounts").style.display = "none";
@@ -144,11 +138,14 @@ $(document).bind('pageinit',function(){
 			alert("No saved accounts, default data added.");
 			autoFillData();
 		}
-		var makeDiv = document.createElement("div");
+		var makeDiv = document.getElementById("allInfo");
 		makeDiv.setAttribute("id", "items");
+		makeDiv.setAttribute("data-role", "content")
 		var makeList = document.createElement("ul");
 		makeDiv.appendChild(makeList);
-		document.body.appendChild(makeDiv);
+		$('#allInfo').append(makeDiv);
+
+		//document.body.appendChild(makeDiv);
 		e("items").style.display = "block";
 		for(var i = 0, len = localStorage.length; i<len; i++){
 			var makeli = document.createElement("li");
@@ -266,28 +263,20 @@ $(document).bind('pageinit',function(){
 		}
 	}
 	
-	function validate(d){
+/*	function validate(d){
 		var getDname = e("dname");
 		var getFname = e("fname");
 		var getLname = e("lname");
 		
-	//	errMsg.innerHTML = "";
 			getDname.style.border = "1px solid black";
 			getFname.style.border = "1px solid black";
 			getLname.style.border = "1px solid black";
-
+*/
 		var message = [];
-	/*	if(getGroup.value === "--Movies--"){
-			var groupError = "Please Pick A Disc Format.";
-			getGroup.style.border = "1px solid red";
-			message.push(groupError);
-		}
-		if(getGroup.value === "--Games--"){
-			var groupError = "Please Pick A Disc Format.";
-			getGroup.style.border = "1px solid red";
-			message.push(groupError);
-		} */
-		if(getFname.value === ""){
+		$("div > input.required").css({
+		backgroundColor: "#ff0000"
+		});
+		/*if(getFname.value === ""){
 			var fnameError = "Please Type in First Name.";
 			getFname.style.border = "1px solid red";
 			message.push(fnameError);
@@ -307,8 +296,7 @@ $(document).bind('pageinit',function(){
 			for(var i=0, j=message.length; i < j; i++){
 				var text = document.createElement("li");
 				text.innerHTML = message[i];
-//				errMsg.appendChild(text);
-			}
+			}*/
 			d.preventDefault()
 			return false;
 		}else{
@@ -326,10 +314,7 @@ $(document).bind('pageinit',function(){
 	wheelHouse();
 	
 	//links and submit button
-	var removeLink = e ("remove");
-	removeLink.addEventListener("click", deleteData);
-	var viewLink = e ("allAccounts");
-	viewLink.addEventListener("click", getData);
-	var save = e("submit");
-	save.addEventListener("click", validate);
+	$("#remove").bind("click", deleteData);
+	$("#allAccounts").bind("click", getData);
+	$("#submit").bind("click", validate);
 
