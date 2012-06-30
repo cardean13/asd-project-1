@@ -115,7 +115,7 @@ $(document).bind('pageinit',function(){
 			item.job =["Do they have a job?", jobValue];
 			item.replace =["If broken, could they replace it?", replaceValue];
 			item.trust =["Do you fully trust them?", trustValue];
-		//	item.group =["Group:", e("groups").value];
+			item.media =["Media:", e("media").value];
 			item.dname =["Disc Name:", e("dname").value];
 			item.value =["Value:", e("value").value];
 			item.ldate =["Date Lent:", e("ldate").value];
@@ -132,12 +132,15 @@ $(document).bind('pageinit',function(){
 			alert("No saved accounts, default data added.");
 			autoFillData();
 		}
-		var makeDiv = document.getElementById("allInfo");
-		makeDiv.setAttribute("id", "items");
-		makeDiv.setAttribute("data-role", "content")
-		var makeList = document.createElement("ul");
-		makeDiv.appendChild(makeList);
-		$('#allInfo').append(makeDiv);
+		var makeDiv = $("#allInfo");
+		makeDiv.attr("datarole", "content");
+		makeDiv.append("<ul id=" + "makelist")
+		var makeList = $("#allInfo");
+		makeList.attr({
+            dataRole:"listview",
+            dataInset:"true",
+            dataFilter:"true"
+        });
 
 		//document.body.appendChild(makeDiv);
 		e("items").style.display = "block";
@@ -169,10 +172,11 @@ $(document).bind('pageinit',function(){
 		}
 	}
 	function getImage(catName, makeSubList){
-		var imageLi = $.create("li");
+		var imageLi = $("<li></li>");
 		makeSubList.append(imageLi);
-		var newImg = $.create("img");
-		var setSrc = newImg.setAttribute("src", "images/"+ catName + ".png");
+		var newImg = $("<img />");
+		newImg.attr("src", "images/"+ catName + ".png");
+		imageLi.append(newImg);
 	}
 	//make Item links function, creates edit and delete links
 	function makeItemLinks(key, linksLi){
